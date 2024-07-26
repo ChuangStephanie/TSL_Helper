@@ -7,6 +7,7 @@ import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Menu from "./Menu";
+import { Link } from "react-router-dom";
 
 export default function Appbar() {
   const [open, setOpen] = React.useState(false);
@@ -29,8 +30,10 @@ export default function Appbar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Typography variant="title" component="div" sx={{ flexGrow: 1 }}>
+            <Link style={{textTransform: "uppercase", color: "white"}} to="/">
             Techcess Solutions
+            </Link>
           </Typography>
           {/* <Button color="inherit">Login</Button> */}
         </Toolbar>
