@@ -4,14 +4,15 @@ import { Route, Routes } from "react-router-dom";
 import Shipment from "./components/Shipment";
 import Dropship from "./components/Dropship";
 import BOL from "./components/BOL";
-import Sidebar from "./components/Sidebar";
+import Appbar from "./components/Appbar";
+import Menu from "./components/Menu";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <>
-      <Sidebar />
+      <Appbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/shipment" element={<Shipment />} />
