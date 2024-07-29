@@ -1,10 +1,3 @@
-
-body {
-	background-color: #F0F0F0;
-	font-size: 100%;
-	color: #000;
-	font-family: Arial, Helvetica, sans-serif;
-	}
 	
 .left {
 	float: left;
@@ -54,126 +47,7 @@ input {
 	background: #E3FAFA;
 	}
 	
-input:hover, textarea:hover {
-	background: #FFFFCC;
-	}
 	
-input:focus, textarea:focus {
-	border: 1px solid #666;
-	}
-
-.price:hover {
-	background: #FFF;
-	}
-
-.price:focus {
-	border: none;
-	}
-
-.button {
-	display: inline;
-	padding: 4px 8px; 
-	background-color: #008cba; 
-	color: #FFF;
-    font: .95em Helvetica; 
-    text-decoration: none;
-    }
-    
-.button:hover { 
-	 color: #FFF;
-	 background-color: #006f94;
-	}
-	
-.green {
-	background-color: #4CAF50;
-	color: #FFF;
-	font: .95em Helvetica;
-	}
-
-.green:hover {
-	background-color: #46a049; 
-	}
-	
-/*__________________________________________________Head
-Head
-*/
-
-#head, #how-to {
-	margin: 0 auto;
-	padding-top: 10px;
-	margin-bottom: 20px;
-	width: 864px;
-	}
-	
-h1 {
-	padding-bottom: 10px;
-	color: #333;
-	font-weight: normal;
-	font-size: 1.5em;
-	display:inline;
-	}
-	
-h1 a {
-	text-decoration: none;
-	color: #333;
-	}
-	
-a.nav-link {
-	text-decoration: none;
-	color: #333;
-	}
-	
-#about {
-	margin-top: 30px;
-	}	
-	
-#about-head {
-	margin-bottom: 10px;
-	}
-	
-h3 {
-	color: #333;
-	font-size: 1.4em;
-	display: inline;
-	}
-	
-#about {
-	padding: 5px;
-	background: #EEE;
-	color: #333;
-	border: 1px solid #666;
-	}
-	
-#how-to {
-	padding: 5px;
-	background: #FFF;
-	color: #333;
-	border: 1px solid #666;
-	}
-	
-#about p, #how-to p {
-	padding-bottom: 10px;
-	}
-
-/*__________________________________________________Banner Ad
-Banner AD
-*/
-
-#banner-ad {
-	margin: 20px 0px;
-}
-
-/*__________________________________________________Actions
-Actions
-*/
-
-#actions {
-	margin: 0 auto;
-	padding-top: 10px;
-	margin-bottom: -20px;
-	width: 864px;
-	}
-
 /*__________________________________________________Main
 Main
 */
@@ -185,6 +59,9 @@ Main
 	height: 1040px;
 	background: #FFF;
 	border: 1px solid #808080;
+	font-size: 100%;
+	color: #000;
+	font-family: Arial, Helvetica, sans-serif;
 	}
 	
 /*__________________________________________________Invoice
@@ -206,8 +83,7 @@ form input, form textarea {
 	line-height: 12px;
 	}
 
-#invHeader {
-	}
+
 	
 #headLeft {
 	float: left;

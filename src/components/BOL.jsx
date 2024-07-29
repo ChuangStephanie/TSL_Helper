@@ -1,7 +1,6 @@
 import React, { useRef } from "react";
 import { Button } from "@mui/material";
 import { useReactToPrint } from "react-to-print";
-import "../CSS/modal.css";
 import "../CSS/print.css";
 import "../CSS/reset.css";
 import "../CSS/styles.css";
