@@ -1,12 +1,17 @@
 import React from "react";
-import { Box, Button, inputLabelClasses, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  inputLabelClasses,
+  TextField,
+  Typography,
+} from "@mui/material";
 
 export default function Shipment() {
-
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
     console.log("submitted");
-    event.preventDefault();
-  }
+    e.preventDefault();
+  };
 
   return (
     <>
@@ -42,7 +47,7 @@ export default function Shipment() {
           }}
         ></TextField>
         <Box>
-          <Typography variant="subtitle1">Destination</Typography>
+          <Typography variant="subtitle1">Ship To</Typography>
           <TextField
             id="address"
             label="Address:"
@@ -150,28 +155,30 @@ export default function Shipment() {
             },
           }}
         ></TextField>
-        <Typography variant="subtitle1">Item(s)</Typography>
-        <TextField
-          id="item"
-          label="Item(s):"
-          multiline
-          variant="filled"
-          color="primary"
-          className="textfield"
-          InputLabelProps={{
-            sx: {
-              color: "gray",
-              [`&.${inputLabelClasses.shrink}`]: {
-                color: "primary",
+        <Box className="items">
+          <Typography variant="subtitle1">Item(s)</Typography>
+          <TextField
+            id="item"
+            label="Item(s):"
+            multiline
+            variant="filled"
+            color="primary"
+            className="textfield"
+            InputLabelProps={{
+              sx: {
+                color: "gray",
+                [`&.${inputLabelClasses.shrink}`]: {
+                  color: "primary",
+                },
               },
-            },
-          }}
-          sx={{
-            "& .MuiInputBase-input": {
-              color: "gray",
-            },
-          }}
-        ></TextField>
+            }}
+            sx={{
+              "& .MuiInputBase-input": {
+                color: "gray",
+              },
+            }}
+          ></TextField>
+        </Box>
         <Typography variant="subtitle1">Total Pallets</Typography>
         <TextField
           id="pallets"
