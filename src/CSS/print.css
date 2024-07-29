@@ -1,0 +1,34 @@
+body {
+	background-color: #FFF;
+	background-image: none;
+	}
+
+.delete, .button, #head, #actions {
+	display: none;
+	}
+	
+#main {
+	border: none;
+	height: auto;
+	}
+	
+body {
+	margin-top: -60px;
+	}
+	
+textarea {
+	background: #FFF;
+	}
+	
+input {
+	background: #FFF;
+	}
+	
+table .tableBanner {
+	color: white !important;
+	background: black !important;
+	}
+	
+.w-232 {
+	width:230px;
+}
