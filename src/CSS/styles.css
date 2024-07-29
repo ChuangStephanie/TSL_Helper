@@ -103,6 +103,10 @@ form input, form textarea {
 	font-weight: bold;
 	padding-bottom: 16px;
 	color: #000;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	vertical-align: baseline;
 	}
 	
 #headRight h1 {
