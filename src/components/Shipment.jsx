@@ -2,6 +2,12 @@ import React from "react";
 import { Box, Button, inputLabelClasses, TextField, Typography } from "@mui/material";
 
 export default function Shipment() {
+
+  const handleSubmit = () => {
+    console.log("submitted");
+    event.preventDefault();
+  }
+
   return (
     <>
       <h1>Shipment Pallet Labels</h1>
@@ -11,6 +17,7 @@ export default function Shipment() {
           "& .MuiTextField-root": { m: 1, width: "25ch" },
         }}
         className="form"
+        onSubmit={handleSubmit}
       >
         <Typography variant="subtitle1">Order #</Typography>
         <TextField
