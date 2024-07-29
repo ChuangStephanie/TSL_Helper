@@ -145,6 +145,8 @@ export default function BOL() {
               InputLabelProps={{
                 sx: {
                   color: "gray",
+                  fontSize: "12px",
+                  top: "-5px",
                   [`&.${inputLabelClasses.shrink}`]: {
                     color: "primary",
                   },
@@ -153,6 +155,9 @@ export default function BOL() {
               sx={{
                 "& .MuiInputBase-input": {
                   color: "gray",
+                },
+                "& .MuiFilledInput-root": {
+                  height: "30px",
                 },
               }}
             />
@@ -258,6 +263,8 @@ export default function BOL() {
               InputLabelProps={{
                 sx: {
                   color: "gray",
+                  fontSize: "12px",
+                  top: "-5px",
                   [`&.${inputLabelClasses.shrink}`]: {
                     color: "primary",
                   },
@@ -266,6 +273,9 @@ export default function BOL() {
               sx={{
                 "& .MuiInputBase-input": {
                   color: "gray",
+                },
+                "& .MuiFilledInput-root": {
+                  height: "30px",
                 },
               }}
             />
@@ -368,10 +378,57 @@ export default function BOL() {
             }}
           ></TextField>
         </Box>
-        <Typography variant="subtitle1">Total Pallets</Typography>
+        <Box className="freightCharges">
+          <Typography variant="subtitle1">
+            Third Party Freight Charges
+          </Typography>
+          <TextField
+            id="freight"
+            label="Bill To:"
+            multiline
+            variant="filled"
+            color="primary"
+            className="textfield"
+            InputLabelProps={{
+              sx: {
+                color: "gray",
+                [`&.${inputLabelClasses.shrink}`]: {
+                  color: "primary",
+                },
+              },
+            }}
+            sx={{
+              "& .MuiInputBase-input": {
+                color: "gray",
+              },
+            }}
+          ></TextField>
+          <Typography sx={{ color: "gray" }}>
+            Freight Charge Terms (prepaid unless marked otherwise)
+          </Typography>
+          <FormGroup className="checkbox" row>
+            <FormControlLabel
+              control={<Checkbox />}
+              label="Prepaid"
+            ></FormControlLabel>
+            <FormControlLabel
+              control={<Checkbox />}
+              label="Collect"
+            ></FormControlLabel>
+            <FormControlLabel
+              control={<Checkbox />}
+              label="3rd Party"
+            ></FormControlLabel>
+          </FormGroup>
+          <FormGroup>
+            <FormControlLabel control={<Checkbox />} label="Master BOL: w/attached underlying BOLs"></FormControlLabel>
+          </FormGroup>
+        </Box>
+        <Box className="">
+        <Typography variant="subtitle1">Customer Order Information</Typography>
         <TextField
-          id="pallets"
-          label="Total Pallets:"
+          id="orderNum"
+          label="Customer Order No.:"
           multiline
           variant="filled"
           color="primary"
@@ -390,11 +447,9 @@ export default function BOL() {
             },
           }}
         ></TextField>
-        <Typography variant="subtitle1">Scheduled Ship Date</Typography>
         <TextField
-          id="shipdate"
-          label="Ship Date:"
-          multiline
+          id="pkgs"
+          label="# Pkgs:"
           variant="filled"
           color="primary"
           className="textfield"
@@ -412,6 +467,27 @@ export default function BOL() {
             },
           }}
         ></TextField>
+        <TextField
+          id="weight"
+          label="Weight:"
+          variant="filled"
+          color="primary"
+          className="textfield"
+          InputLabelProps={{
+            sx: {
+              color: "gray",
+              [`&.${inputLabelClasses.shrink}`]: {
+                color: "primary",
+              },
+            },
+          }}
+          sx={{
+            "& .MuiInputBase-input": {
+              color: "gray",
+            },
+          }}
+        ></TextField>
+        </Box>
         <Button type="submit">Submit</Button>
       </Box>
     </>
