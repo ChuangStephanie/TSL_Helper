@@ -12,7 +12,12 @@ export default function BOL() {
   });
   return (
     <>
-      <Button className="print" variant="contained" onClick={handlePrint}>Print</Button>
+      <div className="printDiv">
+        <Button className="print" variant="contained" onClick={handlePrint}>
+          Print
+        </Button>
+      </div>
+
       <div id="main">
         <form ref={printRef} id="form" action="topdf.php" method="post">
           <div id="invHeader">
@@ -798,6 +803,11 @@ export default function BOL() {
             <div className="clear">{/*empty*/}</div>
           </div>
         </form>
+      </div>
+      <div className="printDiv">
+        <Button className="print" variant="contained" onClick={handlePrint}>
+          Print
+        </Button>
       </div>
     </>
   );

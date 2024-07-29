@@ -11,6 +11,13 @@
 	clear: both;
 	}
 	
+.printDiv {
+	display: flex;
+	justify-content: center;
+	margin-top: 25px;
+	margin-bottom: -5px;
+}
+
 input, textarea {
 	margin: 0;
 	padding: 0;
