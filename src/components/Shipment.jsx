@@ -19,10 +19,11 @@ export default function Shipment() {
     newFormValues[i][e.target.name] = e.target.value;
     setFormValues(newFormValues);
   };
-  const addFormFields = () => {
-    setFormValues([...formValues], { item: "" });
+  let addFormFields = () => {
+    setFormValues([...formValues, { item: "" }]);
+    console.log("item added");
   };
-  const removeFormFields = () => {
+  let removeFormFields = (i) => {
     let newFormValues = [...formValues];
     newFormValues.splice(i, 1);
     setFormValues(newFormValues);
@@ -181,7 +182,7 @@ export default function Shipment() {
                 variant="filled"
                 className="textfield"
                 value={element.name || ""}
-                onChange={(e) => this.handleChange(index, e)}
+                onChange={(e) => handleChange(index, e)}
                 InputLabelProps={{
                   sx: {
                     color: "gray",
@@ -197,7 +198,10 @@ export default function Shipment() {
                 }}
               />
               {index ? (
-                <Button onClick={() => this.removeFormFields(index)}>
+                <Button
+                  variant="contained"
+                  onClick={() => removeFormFields(index)}
+                >
                   Remove
                 </Button>
               ) : null}
@@ -224,7 +228,9 @@ export default function Shipment() {
               },
             }}
           ></TextField> */}
-          <Button onClick={() => this.addFormFields()}>Add</Button>
+          <Button variant="contained" onClick={() => addFormFields()}>
+            Add
+          </Button>
         </Box>
         <Typography variant="subtitle1">Total Pallets</Typography>
         <TextField
@@ -270,7 +276,9 @@ export default function Shipment() {
             },
           }}
         ></TextField>
-        <Button type="submit">Submit</Button>
+        <Button variant="contained" type="submit">
+          Submit
+        </Button>
       </Box>
     </>
   );
