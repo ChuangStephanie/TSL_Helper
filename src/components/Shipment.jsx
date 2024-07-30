@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Button,
@@ -8,9 +8,24 @@ import {
 } from "@mui/material";
 
 export default function Shipment() {
+  const [formValues, setFormValues] = useState([{ item: "" }]);
   const handleSubmit = (e) => {
     console.log("submitted");
     e.preventDefault();
+  };
+
+  const handleChange = (i, e) => {
+    let newFormValues = [...formValues];
+    newFormValues[i][e.target.name] = e.target.value;
+    setFormValues(newFormValues);
+  };
+  const addFormFields = () => {
+    setFormValues([...formValues], { item: "" });
+  };
+  const removeFormFields = () => {
+    let newFormValues = [...formValues];
+    newFormValues.splice(i, 1);
+    setFormValues(newFormValues);
   };
 
   return (
@@ -157,7 +172,38 @@ export default function Shipment() {
         ></TextField>
         <Box className="items">
           <Typography variant="subtitle1">Item(s)</Typography>
-          <TextField
+          {formValues.map((element, index) => (
+            <Box key={index}>
+              <TextField
+                id="item"
+                label="Item(s)"
+                multiline
+                variant="filled"
+                className="textfield"
+                value={element.name || ""}
+                onChange={(e) => this.handleChange(index, e)}
+                InputLabelProps={{
+                  sx: {
+                    color: "gray",
+                    [`&.${inputLabelClasses.shrink}`]: {
+                      color: "primary",
+                    },
+                  },
+                }}
+                sx={{
+                  "& .MuiInputBase-input": {
+                    color: "gray",
+                  },
+                }}
+              />
+              {index ? (
+                <Button onClick={() => this.removeFormFields(index)}>
+                  Remove
+                </Button>
+              ) : null}
+            </Box>
+          ))}
+          {/* <TextField
             id="item"
             label="Item(s):"
             multiline
@@ -177,7 +223,8 @@ export default function Shipment() {
                 color: "gray",
               },
             }}
-          ></TextField>
+          ></TextField> */}
+          <Button onClick={() => this.addFormFields()}>Add</Button>
         </Box>
         <Typography variant="subtitle1">Total Pallets</Typography>
         <TextField
