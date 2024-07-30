@@ -9,12 +9,13 @@ import {
 
 export default function Shipment() {
   const [formValues, setFormValues] = useState([{ item: "" }]);
-  const handleSubmit = (e) => {
+  let handleSubmit = (e) => {
     console.log("submitted");
     e.preventDefault();
+    alert(JSON.stringify(formValues));
   };
 
-  const handleChange = (i, e) => {
+  let handleChange = (i, e) => {
     let newFormValues = [...formValues];
     newFormValues[i][e.target.name] = e.target.value;
     setFormValues(newFormValues);
@@ -27,6 +28,7 @@ export default function Shipment() {
     let newFormValues = [...formValues];
     newFormValues.splice(i, 1);
     setFormValues(newFormValues);
+    console.log("item removed");
   };
 
   return (
@@ -176,12 +178,12 @@ export default function Shipment() {
           {formValues.map((element, index) => (
             <Box key={index}>
               <TextField
-                id="item"
+                name="item"
                 label="Item(s)"
                 multiline
                 variant="filled"
                 className="textfield"
-                value={element.name || ""}
+                value={element.item || ""}
                 onChange={(e) => handleChange(index, e)}
                 InputLabelProps={{
                   sx: {
