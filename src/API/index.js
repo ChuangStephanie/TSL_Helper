@@ -15,7 +15,7 @@ export async function sendShipmentDetails(shipmentDetails) {
     const result = await response.json();
     return result;
   } catch (error) {
-    console.error("Error creating profuct", error);
+    console.error("Error creating shipment label", error);
     throw error;
   }
 }
