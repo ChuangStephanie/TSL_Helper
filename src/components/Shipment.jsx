@@ -88,6 +88,27 @@ export default function Shipment() {
             }}
           ></TextField>
           <TextField
+            id="address2"
+            label="APT/STE/etc:"
+            multiline
+            variant="filled"
+            color="primary"
+            className="textfield"
+            InputLabelProps={{
+              sx: {
+                color: "gray",
+                [`&.${inputLabelClasses.shrink}`]: {
+                  color: "primary",
+                },
+              },
+            }}
+            sx={{
+              "& .MuiInputBase-input": {
+                color: "gray",
+              },
+            }}
+          ></TextField>
+          <TextField
             id="city"
             label="City:"
             multiline
@@ -156,6 +177,27 @@ export default function Shipment() {
           <TextField
             id="address"
             label="Address:"
+            multiline
+            variant="filled"
+            color="primary"
+            className="textfield"
+            InputLabelProps={{
+              sx: {
+                color: "gray",
+                [`&.${inputLabelClasses.shrink}`]: {
+                  color: "primary",
+                },
+              },
+            }}
+            sx={{
+              "& .MuiInputBase-input": {
+                color: "gray",
+              },
+            }}
+          ></TextField>
+          <TextField
+            id="address2"
+            label="APT/STE/etc:"
             multiline
             variant="filled"
             color="primary"
