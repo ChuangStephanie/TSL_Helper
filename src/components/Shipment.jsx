@@ -64,7 +64,94 @@ export default function Shipment() {
             },
           }}
         ></TextField>
-        <Box>
+        <Box className="shipFrom">
+          <Typography variant="subtitle1">Ship From</Typography>
+          <TextField
+            id="address"
+            label="Address:"
+            multiline
+            variant="filled"
+            color="primary"
+            className="textfield"
+            InputLabelProps={{
+              sx: {
+                color: "gray",
+                [`&.${inputLabelClasses.shrink}`]: {
+                  color: "primary",
+                },
+              },
+            }}
+            sx={{
+              "& .MuiInputBase-input": {
+                color: "gray",
+              },
+            }}
+          ></TextField>
+          <TextField
+            id="city"
+            label="City:"
+            multiline
+            variant="filled"
+            color="primary"
+            className="textfield"
+            InputLabelProps={{
+              sx: {
+                color: "gray",
+                [`&.${inputLabelClasses.shrink}`]: {
+                  color: "primary",
+                },
+              },
+            }}
+            sx={{
+              "& .MuiInputBase-input": {
+                color: "gray",
+              },
+            }}
+          ></TextField>
+          <TextField
+            id="state"
+            label="State:"
+            multiline
+            variant="filled"
+            color="primary"
+            className="textfield"
+            InputLabelProps={{
+              sx: {
+                color: "gray",
+                [`&.${inputLabelClasses.shrink}`]: {
+                  color: "primary",
+                },
+              },
+            }}
+            sx={{
+              "& .MuiInputBase-input": {
+                color: "gray",
+              },
+            }}
+          ></TextField>
+          <TextField
+            id="zip"
+            label="Zip Code:"
+            multiline
+            variant="filled"
+            color="primary"
+            className="textfield"
+            InputLabelProps={{
+              sx: {
+                color: "gray",
+                [`&.${inputLabelClasses.shrink}`]: {
+                  color: "primary",
+                },
+              },
+            }}
+            sx={{
+              "& .MuiInputBase-input": {
+                color: "gray",
+              },
+            }}
+          ></TextField>
+        </Box>
+        <Box className="shiptTo">
           <Typography variant="subtitle1">Ship To</Typography>
           <TextField
             id="address"
