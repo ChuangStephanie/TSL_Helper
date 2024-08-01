@@ -12,6 +12,8 @@ export default function Shipment() {
   const [formValues, setFormValues] = useState([{ item: "", quantity: "" }]);
   const [orderNum, setOrderNum] = useState("");
   const [shipFrom, setShipFrom] = useState({
+    name: "",
+    phone: "",
     street1: "",
     street2: "",
     city: "",
@@ -19,6 +21,8 @@ export default function Shipment() {
     zip: "",
   });
   const [shipTo, setShipTo] = useState({
+    name: "",
+    phone: "",
     street1: "",
     street2: "",
     city: "",
@@ -33,13 +37,13 @@ export default function Shipment() {
     e.preventDefault();
     try {
       const shipmentDetails = {
-        "order-number":orderNum,
+        "order-number": orderNum,
         "pallet-count": Number(palletCount), //change to number
         carrier,
         "ship-date": shipDate,
         origin: shipFrom,
         destination: shipTo,
-        "order-summary": formValues.map(({item, quantity}) => ({
+        "order-summary": formValues.map(({ item, quantity }) => ({
           item,
           qty: Number(quantity),
         })),
@@ -104,6 +108,48 @@ export default function Shipment() {
         <Box className="shipFrom">
           <Typography variant="subtitle1">Ship From</Typography>
           <TextField
+            id="name"
+            label="Name:"
+            variant="filled"
+            value={shipFrom.name}
+            onChange={(e) => setShipFrom({ ...shipFrom, name: e.target.value })}
+            InputLabelProps={{
+              sx: {
+                color: "gray",
+                [`&.${inputLabelClasses.shrink}`]: {
+                  color: "primary",
+                },
+              },
+            }}
+            sx={{
+              "& .MuiInputBase-input": {
+                color: "gray",
+              },
+            }}
+          ></TextField>
+          <TextField
+            id="phone"
+            label="Phone:"
+            variant="filled"
+            value={shipFrom.phone}
+            onChange={(e) =>
+              setShipFrom({ ...shipFrom, phone: e.target.value })
+            }
+            InputLabelProps={{
+              sx: {
+                color: "gray",
+                [`&.${inputLabelClasses.shrink}`]: {
+                  color: "primary",
+                },
+              },
+            }}
+            sx={{
+              "& .MuiInputBase-input": {
+                color: "gray",
+              },
+            }}
+          ></TextField>
+          <TextField
             id="address"
             label="Address:"
             variant="filled"
@@ -152,9 +198,7 @@ export default function Shipment() {
             label="City:"
             variant="filled"
             value={shipFrom.city}
-            onChange={(e) =>
-              setShipFrom({ ...shipFrom, city: e.target.value })
-            }
+            onChange={(e) => setShipFrom({ ...shipFrom, city: e.target.value })}
             InputLabelProps={{
               sx: {
                 color: "gray",
@@ -196,9 +240,7 @@ export default function Shipment() {
             label="Zip Code:"
             variant="filled"
             value={shipFrom.zip}
-            onChange={(e) =>
-              setShipFrom({ ...shipFrom, zip: e.target.value })
-            }
+            onChange={(e) => setShipFrom({ ...shipFrom, zip: e.target.value })}
             InputLabelProps={{
               sx: {
                 color: "gray",
@@ -217,13 +259,53 @@ export default function Shipment() {
         <Box className="shiptTo">
           <Typography variant="subtitle1">Ship To</Typography>
           <TextField
+            id="name"
+            label="Name:"
+            variant="filled"
+            value={shipTo.name}
+            onChange={(e) => setShipTo({ ...shipTo, name: e.target.value })}
+            InputLabelProps={{
+              sx: {
+                color: "gray",
+                [`&.${inputLabelClasses.shrink}`]: {
+                  color: "primary",
+                },
+              },
+            }}
+            sx={{
+              "& .MuiInputBase-input": {
+                color: "gray",
+              },
+            }}
+          ></TextField>
+          <TextField
+            id="phone"
+            label="Phone:"
+            variant="filled"
+            value={shipTo.phone}
+            onChange={(e) =>
+              setShipTo({ ...shipTo, phone: e.target.value })
+            }
+            InputLabelProps={{
+              sx: {
+                color: "gray",
+                [`&.${inputLabelClasses.shrink}`]: {
+                  color: "primary",
+                },
+              },
+            }}
+            sx={{
+              "& .MuiInputBase-input": {
+                color: "gray",
+              },
+            }}
+          ></TextField>
+          <TextField
             id="address"
             label="Address:"
             variant="filled"
             value={shipTo.street1}
-            onChange={(e) =>
-              setShipTo({ ...shipTo, street1: e.target.value })
-            }
+            onChange={(e) => setShipTo({ ...shipTo, street1: e.target.value })}
             InputLabelProps={{
               sx: {
                 color: "gray",
@@ -243,9 +325,7 @@ export default function Shipment() {
             label="APT/STE/etc:"
             variant="filled"
             value={shipTo.street2}
-            onChange={(e) =>
-              setShipTo({ ...shipTo, street2: e.target.value })
-            }
+            onChange={(e) => setShipTo({ ...shipTo, street2: e.target.value })}
             InputLabelProps={{
               sx: {
                 color: "gray",
@@ -265,9 +345,7 @@ export default function Shipment() {
             label="City:"
             variant="filled"
             value={shipTo.city}
-            onChange={(e) =>
-              setShipTo({ ...shipTo, city: e.target.value })
-            }
+            onChange={(e) => setShipTo({ ...shipTo, city: e.target.value })}
             InputLabelProps={{
               sx: {
                 color: "gray",
@@ -287,9 +365,7 @@ export default function Shipment() {
             label="State:"
             variant="filled"
             value={shipTo.state}
-            onChange={(e) =>
-              setShipTo({ ...shipTo, state: e.target.value })
-            }
+            onChange={(e) => setShipTo({ ...shipTo, state: e.target.value })}
             InputLabelProps={{
               sx: {
                 color: "gray",
@@ -309,9 +385,7 @@ export default function Shipment() {
             label="Zip Code:"
             variant="filled"
             value={shipTo.zip}
-            onChange={(e) =>
-              setShipTo({ ...shipTo, zip: e.target.value })
-            }
+            onChange={(e) => setShipTo({ ...shipTo, zip: e.target.value })}
             InputLabelProps={{
               sx: {
                 color: "gray",
