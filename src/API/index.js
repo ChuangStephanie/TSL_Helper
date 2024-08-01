@@ -1,8 +1,8 @@
-export const URL = "http://localhost:5000/api";
+export const URL = "http://127.0.0.1:5000/api";
 
 export async function sendShipmentDetails(shipmentDetails) {
   try {
-    const response = await fetch(`${URL}/palletlabels`, {
+    const response = await fetch(`${URL}/palletlabels/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
