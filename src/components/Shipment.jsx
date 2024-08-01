@@ -12,15 +12,15 @@ export default function Shipment() {
   const [formValues, setFormValues] = useState([{ item: "", quantity: "" }]);
   const [orderNum, setOrderNum] = useState("");
   const [shipFrom, setShipFrom] = useState({
-    address: "",
-    address2: "",
+    street1: "",
+    street2: "",
     city: "",
     state: "",
     zip: "",
   });
   const [shipTo, setShipTo] = useState({
-    address: "",
-    address2: "",
+    street1: "",
+    street2: "",
     city: "",
     state: "",
     zip: "",
@@ -107,9 +107,9 @@ export default function Shipment() {
             id="address"
             label="Address:"
             variant="filled"
-            value={shipFrom.address}
+            value={shipFrom.street1}
             onChange={(e) =>
-              setShipFrom({ ...shipFrom, address: e.target.value })
+              setShipFrom({ ...shipFrom, street1: e.target.value })
             }
             InputLabelProps={{
               sx: {
@@ -129,9 +129,9 @@ export default function Shipment() {
             id="address2"
             label="APT/STE/etc:"
             variant="filled"
-            value={shipFrom.address2}
+            value={shipFrom.street2}
             onChange={(e) =>
-              setShipFrom({ ...shipFrom, address2: e.target.value })
+              setShipFrom({ ...shipFrom, street2: e.target.value })
             }
             InputLabelProps={{
               sx: {
@@ -220,9 +220,9 @@ export default function Shipment() {
             id="address"
             label="Address:"
             variant="filled"
-            value={shipTo.address}
+            value={shipTo.street1}
             onChange={(e) =>
-              setShipTo({ ...shipTo, address: e.target.value })
+              setShipTo({ ...shipTo, street1: e.target.value })
             }
             InputLabelProps={{
               sx: {
@@ -242,9 +242,9 @@ export default function Shipment() {
             id="address2"
             label="APT/STE/etc:"
             variant="filled"
-            value={shipTo.address2}
+            value={shipTo.street2}
             onChange={(e) =>
-              setShipTo({ ...shipTo, address2: e.target.value })
+              setShipTo({ ...shipTo, street2: e.target.value })
             }
             InputLabelProps={{
               sx: {
