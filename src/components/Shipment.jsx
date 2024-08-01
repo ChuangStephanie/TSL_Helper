@@ -33,13 +33,16 @@ export default function Shipment() {
     e.preventDefault();
     try {
       const shipmentDetails = {
-        orderNum,
-        palletCount,
+        "order-number":orderNum,
+        "pallet-count": Number(palletCount), //change to number
         carrier,
-        shipDate,
+        "ship-date": shipDate,
         origin: shipFrom,
         destination: shipTo,
-        orderSummary: formValues,
+        "order-summary": formValues.map(({item, quantity}) => ({
+          item,
+          qty: Number(quantity),
+        })),
       };
       await sendShipmentDetails(shipmentDetails);
       alert("Shipment details submitted successfully! :)");
@@ -79,7 +82,7 @@ export default function Shipment() {
       >
         <Typography variant="subtitle1">Order #</Typography>
         <TextField
-          id="orderNum"
+          id="order-number"
           label="Order #:"
           variant="filled"
           value={orderNum}
