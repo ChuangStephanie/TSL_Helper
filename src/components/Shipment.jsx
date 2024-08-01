@@ -6,26 +6,61 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import { sendShipmentDetails } from "../API";
 
 export default function Shipment() {
-  const [formValues, setFormValues] = useState([{ item: "" }]);
-  let handleSubmit = (e) => {
-    console.log("submitted");
+  const [formValues, setFormValues] = useState([{ item: "", quantity: "" }]);
+  const [orderNum, setOrderNum] = useState("");
+  const [shipFrom, setShipFrom] = useState({
+    address: "",
+    address2: "",
+    city: "",
+    state: "",
+    zip: "",
+  });
+  const [shipTo, setShipTo] = useState({
+    address: "",
+    address2: "",
+    city: "",
+    state: "",
+    zip: "",
+  });
+  const [carrier, setCarrier] = useState("");
+  const [palletCount, setPalletCount] = useState("");
+  const [shipDate, setShipDate] = useState("");
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert(JSON.stringify(formValues));
+    try {
+      const shipmentDetails = {
+        orderNum,
+        palletCount,
+        carrier,
+        shipDate,
+        origin: shipFrom,
+        destination: shipTo,
+        orderSummary: formValues,
+      };
+      await sendShipmentDetails(shipmentDetails);
+      alert("Shipment details submitted successfully! :)");
+    } catch (error) {
+      console.error("Error submitting shipment details:", error);
+      alert("failed to submit shipment details. :(");
+    }
+    console.log("submitted");
   };
 
-  let handleChange = (i, e) => {
-    let newFormValues = [...formValues];
+  const handleChange = (i, e) => {
+    const newFormValues = [...formValues];
     newFormValues[i][e.target.name] = e.target.value;
     setFormValues(newFormValues);
   };
-  let addFormFields = () => {
-    setFormValues([...formValues, { item: "" }]);
+  const addFormFields = () => {
+    setFormValues([...formValues, { item: "", quantity: "" }]);
     console.log("item added");
   };
-  let removeFormFields = (i) => {
-    let newFormValues = [...formValues];
+  const removeFormFields = (i) => {
+    const newFormValues = [...formValues];
     newFormValues.splice(i, 1);
     setFormValues(newFormValues);
     console.log("item removed");
@@ -46,10 +81,9 @@ export default function Shipment() {
         <TextField
           id="orderNum"
           label="Order #:"
-          multiline
           variant="filled"
-          color="primary"
-          className="textfield"
+          value={orderNum}
+          onChange={(e) => setOrderNum(e.target.value)}
           InputLabelProps={{
             sx: {
               color: "gray",
@@ -64,15 +98,38 @@ export default function Shipment() {
             },
           }}
         ></TextField>
-        <Box>
-          <Typography variant="subtitle1">Ship To</Typography>
+        <Box className="shipFrom">
+          <Typography variant="subtitle1">Ship From</Typography>
           <TextField
             id="address"
             label="Address:"
-            multiline
             variant="filled"
-            color="primary"
-            className="textfield"
+            value={shipFrom.address}
+            onChange={(e) =>
+              setShipFrom({ ...shipFrom, address: e.target.value })
+            }
+            InputLabelProps={{
+              sx: {
+                color: "gray",
+                [`&.${inputLabelClasses.shrink}`]: {
+                  color: "primary",
+                },
+              },
+            }}
+            sx={{
+              "& .MuiInputBase-input": {
+                color: "gray",
+              },
+            }}
+          ></TextField>
+          <TextField
+            id="address2"
+            label="APT/STE/etc:"
+            variant="filled"
+            value={shipFrom.address2}
+            onChange={(e) =>
+              setShipFrom({ ...shipFrom, address2: e.target.value })
+            }
             InputLabelProps={{
               sx: {
                 color: "gray",
@@ -90,10 +147,11 @@ export default function Shipment() {
           <TextField
             id="city"
             label="City:"
-            multiline
             variant="filled"
-            color="primary"
-            className="textfield"
+            value={shipFrom.city}
+            onChange={(e) =>
+              setShipFrom({ ...shipFrom, city: e.target.value })
+            }
             InputLabelProps={{
               sx: {
                 color: "gray",
@@ -111,10 +169,11 @@ export default function Shipment() {
           <TextField
             id="state"
             label="State:"
-            multiline
             variant="filled"
-            color="primary"
-            className="textfield"
+            value={shipFrom.state}
+            onChange={(e) =>
+              setShipFrom({ ...shipFrom, state: e.target.value })
+            }
             InputLabelProps={{
               sx: {
                 color: "gray",
@@ -132,10 +191,124 @@ export default function Shipment() {
           <TextField
             id="zip"
             label="Zip Code:"
-            multiline
             variant="filled"
-            color="primary"
-            className="textfield"
+            value={shipFrom.zip}
+            onChange={(e) =>
+              setShipFrom({ ...shipFrom, zip: e.target.value })
+            }
+            InputLabelProps={{
+              sx: {
+                color: "gray",
+                [`&.${inputLabelClasses.shrink}`]: {
+                  color: "primary",
+                },
+              },
+            }}
+            sx={{
+              "& .MuiInputBase-input": {
+                color: "gray",
+              },
+            }}
+          ></TextField>
+        </Box>
+        <Box className="shiptTo">
+          <Typography variant="subtitle1">Ship To</Typography>
+          <TextField
+            id="address"
+            label="Address:"
+            variant="filled"
+            value={shipTo.address}
+            onChange={(e) =>
+              setShipTo({ ...shipTo, address: e.target.value })
+            }
+            InputLabelProps={{
+              sx: {
+                color: "gray",
+                [`&.${inputLabelClasses.shrink}`]: {
+                  color: "primary",
+                },
+              },
+            }}
+            sx={{
+              "& .MuiInputBase-input": {
+                color: "gray",
+              },
+            }}
+          ></TextField>
+          <TextField
+            id="address2"
+            label="APT/STE/etc:"
+            variant="filled"
+            value={shipTo.address2}
+            onChange={(e) =>
+              setShipTo({ ...shipTo, address2: e.target.value })
+            }
+            InputLabelProps={{
+              sx: {
+                color: "gray",
+                [`&.${inputLabelClasses.shrink}`]: {
+                  color: "primary",
+                },
+              },
+            }}
+            sx={{
+              "& .MuiInputBase-input": {
+                color: "gray",
+              },
+            }}
+          ></TextField>
+          <TextField
+            id="city"
+            label="City:"
+            variant="filled"
+            value={shipTo.city}
+            onChange={(e) =>
+              setShipTo({ ...shipTo, city: e.target.value })
+            }
+            InputLabelProps={{
+              sx: {
+                color: "gray",
+                [`&.${inputLabelClasses.shrink}`]: {
+                  color: "primary",
+                },
+              },
+            }}
+            sx={{
+              "& .MuiInputBase-input": {
+                color: "gray",
+              },
+            }}
+          ></TextField>
+          <TextField
+            id="state"
+            label="State:"
+            variant="filled"
+            value={shipTo.state}
+            onChange={(e) =>
+              setShipTo({ ...shipTo, state: e.target.value })
+            }
+            InputLabelProps={{
+              sx: {
+                color: "gray",
+                [`&.${inputLabelClasses.shrink}`]: {
+                  color: "primary",
+                },
+              },
+            }}
+            sx={{
+              "& .MuiInputBase-input": {
+                color: "gray",
+              },
+            }}
+          ></TextField>
+          <TextField
+            id="zip"
+            label="Zip Code:"
+            variant="filled"
+            value={shipTo.zip}
+            onChange={(e) =>
+              setShipTo({ ...shipTo, zip: e.target.value })
+            }
             InputLabelProps={{
               sx: {
                 color: "gray",
@@ -155,10 +328,9 @@ export default function Shipment() {
         <TextField
           id="carrier"
           label="Shipping Carrier:"
-          multiline
           variant="filled"
-          color="primary"
-          className="textfield"
+          value={carrier}
+          onChange={(e) => setCarrier(e.target.value)}
           InputLabelProps={{
             sx: {
               color: "gray",
@@ -199,6 +371,28 @@ export default function Shipment() {
                   },
                 }}
               />
+              <TextField
+                name="quantity"
+                label="Qty"
+                multiline
+                variant="filled"
+                className="textfield"
+                value={element.quantity || ""}
+                onChange={(e) => handleChange(index, e)}
+                InputLabelProps={{
+                  sx: {
+                    color: "gray",
+                    [`&.${inputLabelClasses.shrink}`]: {
+                      color: "primary",
+                    },
+                  },
+                }}
+                sx={{
+                  "& .MuiInputBase-input": {
+                    color: "gray",
+                  },
+                }}
+              />
               {index ? (
                 <Button
                   variant="contained"
@@ -209,27 +403,6 @@ export default function Shipment() {
               ) : null}
             </Box>
           ))}
-          {/* <TextField
-            id="item"
-            label="Item(s):"
-            multiline
-            variant="filled"
-            color="primary"
-            className="textfield"
-            InputLabelProps={{
-              sx: {
-                color: "gray",
-                [`&.${inputLabelClasses.shrink}`]: {
-                  color: "primary",
-                },
-              },
-            }}
-            sx={{
-              "& .MuiInputBase-input": {
-                color: "gray",
-              },
-            }}
-          ></TextField> */}
           <Button variant="contained" onClick={() => addFormFields()}>
             Add
           </Button>
@@ -238,10 +411,9 @@ export default function Shipment() {
         <TextField
           id="pallets"
           label="Total Pallets:"
-          multiline
           variant="filled"
-          color="primary"
-          className="textfield"
+          value={palletCount}
+          onChange={(e) => setPalletCount(e.target.value)}
           InputLabelProps={{
             sx: {
               color: "gray",
@@ -260,10 +432,9 @@ export default function Shipment() {
         <TextField
           id="shipdate"
           label="Ship Date:"
-          multiline
           variant="filled"
-          color="primary"
-          className="textfield"
+          value={shipDate}
+          onChange={(e) => setShipDate(e.target.value)}
           InputLabelProps={{
             sx: {
               color: "gray",
