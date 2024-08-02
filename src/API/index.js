@@ -44,6 +44,11 @@ export async function labelSorting(excel, zip, name) {
       method: "POST",
       body: formData,
     });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
     const blob = await response.blob();
     const url = window.URL.createObjectURL(blob);
 
