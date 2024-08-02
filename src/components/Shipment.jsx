@@ -52,7 +52,7 @@ export default function Shipment() {
       alert("Shipment details submitted successfully! :)");
     } catch (error) {
       console.error("Error submitting shipment details:", error);
-      alert("failed to submit shipment details. :(");
+      alert("Failed to submit shipment details. :(");
     }
     console.log("submitted");
   };

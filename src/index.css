@@ -73,6 +73,17 @@ h1 {
   flex-direction: column;
 }
 
+.DropShip {
+  text-align: center;
+}
+
 .upload {
   margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dropship {
+  width: 25%;
 }
