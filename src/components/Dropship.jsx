@@ -19,7 +19,10 @@ export default function Dropship() {
   };
 
   const handleNameChange = (e) => {
-    setName(e.target.value);
+    const value = e.target.value;
+    const updatedValue = value.replace(/ /g, "_") //should replace space with _
+    setName(updatedValue);
+    console.log(updatedValue);
   };
 
   const handleSubmit = async (e) => {
@@ -32,7 +35,7 @@ export default function Dropship() {
     try {
       await labelSorting(excel, zip, name);
     } catch(error) {
-      console.error("Error duing sorting labels:", error);
+      console.error("Error during sorting labels:", error);
       alert("Failed to sort labels. :(");
     }
   };
