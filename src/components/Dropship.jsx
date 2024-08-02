@@ -9,6 +9,7 @@ export default function Dropship() {
   const [name, setName] = useState("");
 
   const handleFileChange = (e) => {
+    console.log("file uploaded");
     const file = e.target.files[0];
     if (e.target.name === "xlsx-file") {
       setExcel(file);
@@ -21,7 +22,20 @@ export default function Dropship() {
     setName(e.target.value);
   };
 
-  const handleSubmit = async (e) => {};
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!excel || !zip || !name) {
+      alert("Please upload both files and provide sheet name.");
+      return;
+    }
+
+    try {
+      await labelSorting(excel, zip, name);
+    } catch(error) {
+      console.error("Error duing sorting labels:", error);
+      alert("Failed to sort labels. :(");
+    }
+  };
 
   return (
     <Box className="DropShip">
@@ -34,7 +48,7 @@ export default function Dropship() {
           startIcon={<CloudUploadRounded />}
         >
           Upload Excel
-          <input type="file" hidden onChange={handleFileChange} />
+          <input type="file" name="xlsx-file" hidden onChange={handleFileChange} />
         </Button>
         <Button
           className="dropship"
@@ -43,7 +57,7 @@ export default function Dropship() {
           startIcon={<CloudUploadRounded />}
         >
           Upload Zip
-          <input type="file" hidden onChange={handleFileChange} />
+          <input type="file" name="zip-file" hidden onChange={handleFileChange} />
         </Button>
         <TextField
           label="Sheet Name:"

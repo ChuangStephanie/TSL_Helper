@@ -33,12 +33,12 @@ export async function sendShipmentDetails(shipmentDetails) {
 }
 
 //label sorting
-export async function labelSorting(xlsxFile, zipFile, sheetName) {
+export async function labelSorting(excel, zip, name) {
   try {
     const formData = new FormData();
-    formData.append("xlsx-file", xlsxFile);
-    formData.append("zip-file", zipFile);
-    formData.append("sheet-name", sheetName);
+    formData.append("xlsx-file", excel);
+    formData.append("zip-file", zip);
+    formData.append("sheet-name", name);
 
     const response = await fetch(`${baseURL}/dropship-sort`, {
       method: "POST",
