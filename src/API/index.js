@@ -55,8 +55,11 @@ export async function labelSorting(excel, zip, name) {
     window.open(url, "_blank", "noopener,noreferrer");
 
     setTimeout(() => window.URL.revokeObjectURL(url), 10000);
+
+    return { status: "success" };
   } catch (error) {
-    console.error("Error:", error);
+    console.error("Error sorting labels:", error);
+    return { status: "error", message: error.message };
   }
 }
 
@@ -70,11 +73,17 @@ export async function excelUpload(file) {
       method: "POST",
       body: formData,
     });
-    const data = await response.json();
-    console.log(data);
+
+    if (!response.ok) {
+      throw new Error(`Error: ${response.statusText}`);
+    }
+
+    const result = await response.json();
+    console.log("Success:", result);
+    return result;
   } catch (error) {
-    console.error("Error uploading file:", error);
-    throw error;
+    console.error("Error uploading excel file:", error);
+    return { status: "error", message: error.message };
   }
 }
 
@@ -88,15 +97,24 @@ export async function zipUpload(file) {
       method: "POST",
       body: formData,
     });
-    const data = await response.json();
-    console.log(data);
+
+    if (!response.ok) {
+      throw new Error(`Error: ${response.statusText}`);
+    }
+
+    const result = await response.json();
+    console.log(result);
+    return result;
   } catch (error) {
-    console.error("Error:", error);
+    console.error("Error uploading zip file:", error);
+    return { status: "error", message: error.message };
   }
 }
 
 // file upload
-export async function uploadFile(file) {
+// excel and zip inherit from here so probably wont need
+//add just in case
+export async function fileUpload(file) {
   try {
     const formData = new FormData();
     formData.append("file", file);
@@ -105,9 +123,16 @@ export async function uploadFile(file) {
       method: "POST",
       body: formData,
     });
-    const data = await response.json();
-    console.log(data);
+
+    if (!response.ok) {
+      throw new Error(`Error: ${response.statusText}`);
+    }
+
+    const result = await response.json();
+    console.log(result);
+    return result;
   } catch (error) {
-    console.error("Error:", error);
+    console.error("Error uploading file:", error);
+    return { status: "error", message: error.message };
   }
 }
