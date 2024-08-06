@@ -32,9 +32,12 @@ export default function Shipment() {
   const [carrier, setCarrier] = useState("");
   const [palletCount, setPalletCount] = useState("");
   const [shipDate, setShipDate] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const shipmentDetails = {
         "order-number": orderNum,
@@ -52,7 +55,9 @@ export default function Shipment() {
       alert("Shipment details submitted successfully! :)");
     } catch (error) {
       console.error("Error submitting shipment details:", error);
-      alert("Failed to submit shipment details. :(");
+      setError("Failed to submit shipment details. :(");
+    } finally {
+      setLoading(false);
     }
     console.log("submitted");
   };
@@ -283,9 +288,7 @@ export default function Shipment() {
             label="Phone:"
             variant="filled"
             value={shipTo.phone}
-            onChange={(e) =>
-              setShipTo({ ...shipTo, phone: e.target.value })
-            }
+            onChange={(e) => setShipTo({ ...shipTo, phone: e.target.value })}
             InputLabelProps={{
               sx: {
                 color: "gray",
@@ -526,9 +529,20 @@ export default function Shipment() {
             },
           }}
         ></TextField>
-        <Button variant="contained" type="submit">
-          Submit
+        <Button 
+          variant="contained" 
+          type="submit"
+          disabled={loading}
+          sx={{
+            "&.Mui-disabled": {
+              backgroundColor: "gray",
+              color: "white", 
+            }
+          }}
+        >
+          {loading ? "Generating..." : "Submit"}
         </Button>
+        {error && <p style={{ color: "red" }}>{error}</p>}
       </Box>
     </>
   );
