@@ -1,7 +1,7 @@
 export const baseURL = "http://127.0.0.1:5000/api";
 
 export async function sendShipmentDetails(shipmentDetails) {
-  console.log("sending:", shipmentDetails); // log data sent
+  console.log("sending:", JSON.stringify(shipmentDetails)); // log data sent
 
   try {
     const response = await fetch(`${baseURL}/palletlabels/`, {
