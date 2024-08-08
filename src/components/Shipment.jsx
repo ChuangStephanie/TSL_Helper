@@ -529,15 +529,15 @@ export default function Shipment() {
             },
           }}
         ></TextField>
-        <Button 
-          variant="contained" 
+        <Button
+          variant="contained"
           type="submit"
           disabled={loading}
           sx={{
             "&.Mui-disabled": {
               backgroundColor: "gray",
-              color: "white", 
-            }
+              color: "white",
+            },
           }}
         >
           {loading ? "Generating..." : "Submit"}
