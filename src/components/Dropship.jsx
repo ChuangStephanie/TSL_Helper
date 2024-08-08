@@ -144,6 +144,12 @@ export default function Dropship() {
           variant="contained"
           onClick={handleSubmit}
           disabled={loading}
+          sx={{
+            "&.Mui-disabled": {
+              backgroundColor: "gray",
+              color: "white",
+            },
+          }}
         >
           {loading ? "Sorting..." : "Sort Labels"}
         </Button>
