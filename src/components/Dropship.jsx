@@ -7,6 +7,7 @@ import {
   Snackbar,
   Slide,
   Fade,
+  SnackbarContent,
 } from "@mui/material";
 import { CloudUploadRounded } from "@mui/icons-material";
 import { labelSorting, excelUpload, zipUpload, fileUpload } from "../API";
@@ -27,22 +28,22 @@ export default function Dropship() {
   const showSnackbar = (message) => {
     setSnackBarMessage(message);
     setSnackbarOpen(true);
-  }
+  };
 
   const handleCloseSnackbar = () => {
     setSnackbarOpen(false);
-  }
+  };
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (e.target.name === "xlsx-file") {
       console.log("Excel uploaded");
       setExcel(file);
-      showSnackbar("Excel file uploaded")
+      showSnackbar("Excel file uploaded");
     } else if (e.target.name === "zip-file") {
       console.log("Zip uploaded");
       setZip(file);
-      showSnackbar("Zip file uploaded")
+      showSnackbar("Zip file uploaded");
     }
   };
 
@@ -68,7 +69,7 @@ export default function Dropship() {
       console.error("Error during sorting labels:", error);
       setError("Failed to sort labels. :( ");
     } finally {
-      showSnackbar("Labels sorted!")
+      showSnackbar("Labels sorted!");
       setLoading(false);
     }
   };
@@ -82,11 +83,11 @@ export default function Dropship() {
       if (files[0].name.endsWith(".xlsx")) {
         console.log("Excel uploaded");
         setExcel(files[0]);
-        showSnackbar("Excel file uploaded")
+        showSnackbar("Excel file uploaded");
       } else if (files[0].name.endsWith(".zip")) {
         console.log("Zip uploaded");
         setZip(files[0]);
-        showSnackbar("Zip file uploaded")
+        showSnackbar("Zip file uploaded");
       }
     }
   };
@@ -183,12 +184,17 @@ export default function Dropship() {
         </Button>
         {error && <p style={{ color: "red" }}>{error}</p>}
       </Box>
-      <Snackbar 
+      <Snackbar
         open={snackbarOpen}
         onClose={handleCloseSnackbar}
         TransitionComponent={SlideUp}
         message={snackbarMessage}
         autoHideDuration={5000}
+        sx={{
+          "& .MuiSnackbarContent-root": {
+            backgroundColor: "#49c758",
+          },
+        }}
       />
     </Box>
   );
