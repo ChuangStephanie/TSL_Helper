@@ -80,7 +80,7 @@ export default function Shipment() {
 
   return (
     <>
-      <h1>Shipment Pallet Labels</h1>
+      <h1 style={{ textAlign: "center" }}>Shipment Pallet Labels</h1>
       <Box
         component="form"
         sx={{
@@ -89,7 +89,9 @@ export default function Shipment() {
         className="form"
         onSubmit={handleSubmit}
       >
-        <Typography variant="subtitle1">Order #</Typography>
+        <Typography variant="subtitle1" style={{ fontSize: "25px" }}>
+          Order #
+        </Typography>
         <TextField
           id="order-number"
           label="Order #:"
@@ -111,7 +113,9 @@ export default function Shipment() {
           }}
         ></TextField>
         <Box className="shipFrom">
-          <Typography variant="subtitle1">Ship From</Typography>
+          <Typography variant="subtitle1" style={{ fontSize: "25px" }}>
+            Ship From
+          </Typography>
           <TextField
             id="name"
             label="Name:"
@@ -262,7 +266,9 @@ export default function Shipment() {
           ></TextField>
         </Box>
         <Box className="shiptTo">
-          <Typography variant="subtitle1">Ship To</Typography>
+          <Typography variant="subtitle1" style={{ fontSize: "25px" }}>
+            Ship To
+          </Typography>
           <TextField
             id="name"
             label="Name:"
@@ -404,7 +410,9 @@ export default function Shipment() {
             }}
           ></TextField>
         </Box>
-        <Typography variant="subtitle1">Shipping Carrier</Typography>
+        <Typography variant="subtitle1" style={{ fontSize: "25px" }}>
+          Shipping Carrier
+        </Typography>
         <TextField
           id="carrier"
           label="Shipping Carrier:"
@@ -426,7 +434,9 @@ export default function Shipment() {
           }}
         ></TextField>
         <Box className="items">
-          <Typography variant="subtitle1">Item(s)</Typography>
+          <Typography variant="subtitle1" style={{ fontSize: "25px" }}>
+            Item(s)
+          </Typography>
           {formValues.map((element, index) => (
             <Box key={index}>
               <TextField
@@ -487,7 +497,9 @@ export default function Shipment() {
             Add
           </Button>
         </Box>
-        <Typography variant="subtitle1">Total Pallets</Typography>
+        <Typography variant="subtitle1" style={{ fontSize: "25px" }}>
+          Total Pallets
+        </Typography>
         <TextField
           id="pallets"
           label="Total Pallets:"
@@ -508,7 +520,9 @@ export default function Shipment() {
             },
           }}
         ></TextField>
-        <Typography variant="subtitle1">Scheduled Ship Date</Typography>
+        <Typography variant="subtitle1" style={{ fontSize: "25px" }}>
+          Scheduled Ship Date
+        </Typography>
         <TextField
           id="shipdate"
           label="Ship Date:"
