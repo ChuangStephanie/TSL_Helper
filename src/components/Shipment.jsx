@@ -5,6 +5,7 @@ import {
   inputLabelClasses,
   TextField,
   Typography,
+  CircularProgress,
 } from "@mui/material";
 import { sendShipmentDetails } from "../API";
 
@@ -52,7 +53,6 @@ export default function Shipment() {
         })),
       };
       await sendShipmentDetails(shipmentDetails);
-      alert("Shipment details submitted successfully! :)");
     } catch (error) {
       console.error("Error submitting shipment details:", error);
       setError("Failed to submit shipment details. :(");
@@ -554,7 +554,11 @@ export default function Shipment() {
             },
           }}
         >
-          {loading ? "Generating..." : "Submit"}
+          {loading ? (
+            <CircularProgress size={24} sx={{ color: "white" }} />
+          ) : (
+            "Submit"
+          )}
         </Button>
         {error && <p style={{ color: "red" }}>{error}</p>}
       </Box>

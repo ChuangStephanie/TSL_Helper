@@ -6,6 +6,7 @@ import {
   inputLabelClasses,
   Snackbar,
   Slide,
+  CircularProgress,
   Fade,
   SnackbarContent,
 } from "@mui/material";
@@ -180,7 +181,11 @@ export default function Dropship() {
             },
           }}
         >
-          {loading ? "Sorting..." : "Sort Labels"}
+          {loading ? (
+            <CircularProgress size={24} sx={{ color: "white" }} />
+          ) : (
+            "Sort Labels"
+          )}
         </Button>
         {error && <p style={{ color: "red" }}>{error}</p>}
       </Box>
