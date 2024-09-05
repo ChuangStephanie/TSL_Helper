@@ -49,7 +49,7 @@ export default function Shipment() {
         destination: shipTo,
         "order-summary": formValues.map(({ item, quantity }) => ({
           item,
-          qty: Number(quantity),
+          qty: quantity,
         })),
       };
       await sendShipmentDetails(shipmentDetails);
