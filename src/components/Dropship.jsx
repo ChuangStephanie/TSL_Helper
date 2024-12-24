@@ -100,7 +100,8 @@ export default function Dropship() {
 
   return (
     <Box className="DropShip">
-      <h1>Dropship Labels</h1>
+      <h1 className="dropship-title" >Dropship Labels</h1>
+      <p className="instructions" >Drag and drop or select button to upload files</p>
       <Box
         className="upload"
         onDrop={handleDrop}

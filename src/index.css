@@ -87,3 +87,12 @@ h1 {
 .dropship {
   width: 25%;
 }
+
+.dropship-title {
+  margin-bottom: 15px;
+}
+
+.instructions {
+  margin-bottom: 15px;
+  margin-top: 0px;
+}
